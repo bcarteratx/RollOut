@@ -3,17 +3,17 @@ import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
-import TktksSecretPage from '../TktksSecretPage/TktksSecretPage'
-import * as tktkAPI from '../../services/tktk-api';
+import ItemsPage from '../ItemsPage/ItemsPage'
+import * as itemAPI from '../../services/item-api';
 import * as userAPI from '../../services/user-api';
-import Tktk from '../../components/Tktk/Tktk'
+import Item from '../../components/Item/Item'
 import NavBar from '../../components/NavBar/NavBar'
 
 class App extends Component {
   state = {
     // Initialize user if there's a token, otherwise null
     user: userAPI.getUser(),
-    tktks: null
+    items: [],
   };
 
   /*--------------------------- Callback Methods ---------------------------*/
@@ -30,8 +30,8 @@ class App extends Component {
   /*-------------------------- Lifecycle Methods ---------------------------*/
 
   async componentDidMount() {
-    const tktks = await tktkAPI.index();
-    this.setState({ tktks });
+    const items = await itemAPI.index();
+    this.setState({ items });
   }
 
   /*-------------------------------- Render --------------------------------*/
@@ -39,7 +39,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Welcome to Tktk</h1>
+        <h1>Welcome to Rollout</h1>
         <NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
@@ -57,14 +57,16 @@ class App extends Component {
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
-          <Route exact path='/tktk-secret' render={() => 
+          <Route exact path='/inventory' render={() => 
             userAPI.getUser() ? 
-              <TktksSecretPage />
+              <ItemsPage 
+                items={this.state.items}
+              />
             :
               <Redirect to='/login'/>
           }/>
           <Route exact path='/' render={() =>
-            <Tktk />
+            <h3>This is the home page</h3>
           }/>
         </Switch>
       </div>

@@ -6,7 +6,6 @@ import LoginPage from '../LoginPage/LoginPage';
 import ItemsPage from '../ItemsPage/ItemsPage'
 import * as itemAPI from '../../services/item-api';
 import * as userAPI from '../../services/user-api';
-import Item from '../../components/Item/Item'
 import NavBar from '../../components/NavBar/NavBar'
 
 class App extends Component {
@@ -17,6 +16,13 @@ class App extends Component {
   };
 
   /*--------------------------- Callback Methods ---------------------------*/
+
+  handleAddItem = async item => {
+    const newItem = await itemAPI.create(item)
+    this.setState({
+      items: [...this.state.items, newItem]
+    })
+  }
 
   handleLogout = () => {
     userAPI.logout();
@@ -59,8 +65,10 @@ class App extends Component {
           }/>
           <Route exact path='/inventory' render={() => 
             userAPI.getUser() ? 
-              <ItemsPage 
+              <ItemsPage
+                title={'Inventory List'}
                 items={this.state.items}
+                handleAddItem={this.state.handleAddItem}
               />
             :
               <Redirect to='/login'/>

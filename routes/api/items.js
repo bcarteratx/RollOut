@@ -4,12 +4,12 @@ const itemsCtrl = require('../../controllers/items');
 
 /*------------------------------ Public Routes ------------------------------*/
 
-router.get('/', checkAuth, itemsCtrl.index);
 
 /*----------------------------- Protected Routes ----------------------------*/
 
 // Process the token for only the routes below
 router.use(require('../../config/auth'));
+router.get('/', checkAuth, itemsCtrl.index);
 router.post('/', checkAuth, itemsCtrl.create);
 router.get('/:id', checkAuth, itemsCtrl.show);
 router.put('/:id', checkAuth, itemsCtrl.update);

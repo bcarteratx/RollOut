@@ -11,6 +11,9 @@ router.get('/', checkAuth, itemsCtrl.index);
 // Process the token for only the routes below
 router.use(require('../../config/auth'));
 router.post('/', checkAuth, itemsCtrl.create);
+router.get('/:id', checkAuth, itemsCtrl.show);
+router.put('/:id', checkAuth, itemsCtrl.update);
+router.delete('/:id', checkAuth, itemsCtrl.delete);
 
 /*----------------------------- Helper Functions ----------------------------*/
 

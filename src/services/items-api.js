@@ -2,6 +2,11 @@ import tokenService from './tokenService';
 
 const BASE_URL = '/api/items/';
 
+export function getAll() {
+  return fetch(BASE_URL)
+  .then(res => res.json());
+}
+
 export function index() {
   const options = {
     method: 'GET',
@@ -12,7 +17,7 @@ export function index() {
   return fetch(BASE_URL, options).then(res => res.json());
 }
 
-export function create(score) {
+export function create(item) {
   const options = {
     method: 'POST',
     headers: {
@@ -20,7 +25,7 @@ export function create(score) {
       // Add this header - don't forget the space after Bearer
       'Authorization': 'Bearer ' + tokenService.getToken()
     },
-    body: JSON.stringify(score)
+    body: JSON.stringify(item)
   };
   return fetch(BASE_URL, options).then(res => res.json());
 }

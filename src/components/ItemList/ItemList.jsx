@@ -6,7 +6,7 @@ function ItemList(props){
   if(props.items.length){
   return (
     <div className='container'>
-    <h1>Items I have right now</h1>
+    <h1>Items In Stock right now</h1>
       <table className='table tbl'>
         <tbody>
         {props.items.map(item => 

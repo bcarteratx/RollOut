@@ -3,18 +3,22 @@ import React, {Component} from 'react'
 
 class AddItem extends Component {
   state = {
+    // invalidForm: true,
     formData: {
       name: '',
       size: '',
       quantity: '',
-      householdSize: '',
+      inStock: '',
     }
   }
+
+  // formRef = React.createRef();
 
   handleChange = e => {
     const formData = {...this.state.formData, [e.target.name]: e.target.value};
     this.setState({
-      formData
+      formData,
+      // invalidForm: !this.formRef.current.checkValidity()
     });
   };
 
@@ -32,27 +36,38 @@ class AddItem extends Component {
           name='name' 
           value={this.state.formData.name} 
           onChange={this.handleChange}
+          required
         />
+        <br/>
         <span>Product Size:</span>
         <input 
           name='size'
           value={this.state.formData.size}
           onChange={this.handleChange}
+          required
         />
+        <br/>
         <span>Product Quantity:</span>
         <input 
           name='quantity'
           value={this.state.formData.quantity}
           onChange={this.handleChange}
+          required
         />
-        <span>How many people in your Household use this:</span>
-        <input 
-          name='householdSize'
-          value={this.state.formData.householdSize}
+        <br/>
+        <span>Is Item in Stock:</span>
+        <input
+          type='checkbox'
+          name='inStock'
+          value={this.state.formData.inStock}
           onChange={this.handleChange}
         />
         <br/>
-        <input type='submit' value='Add Item' />
+        <input
+          type='submit'
+          value='Add Item'
+          disabled={this.state.invalidForm}
+          />
       </form>
     )
   }

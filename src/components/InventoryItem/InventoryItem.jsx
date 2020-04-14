@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Item = (props) => {
+const IventoryItem = (props) => {
   return (
     <React.Fragment>
-      <h3>{props.item.name}</h3>
+      <h3>{props.inventory.item.name}</h3>
       <div className=''>
             <td>
                 <th>Size:</th>
@@ -16,4 +16,4 @@ const Item = (props) => {
   );
 }
  
-export default Item;
+export default IventoryItem;

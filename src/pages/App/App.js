@@ -4,6 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import ItemsPage from '../ItemsPage/ItemsPage'
+import InventoryPage from '../InventoryPage/InventoryPage'
 import AddItemPage from '../AddItemPage/AddItemPage'
 import * as itemsAPI from '../../services/items-api';
 import * as userAPI from '../../services/user-api';
@@ -14,8 +15,8 @@ class App extends Component {
   state = {
     // Initialize user if there's a token, otherwise null
     user: userAPI.getUser(),
-    inventory: [],
-    items: ['Charmin', 'Lysol'],
+    inventory: ['Toilet Paper', 'Lysol'],
+    items: [],
   };
 
   /*--------------------------- Callback Methods ---------------------------*/
@@ -68,11 +69,12 @@ class App extends Component {
           }/>
           <Route exact path='/inventory' render={({ history }) => 
             userAPI.getUser() ? 
-              <ItemsPage
+              <InventoryPage
                 history={history}
                 title={'Inventory List'}
                 items={this.state.items}
-                handleAddItem={this.state.handleAddItem}
+                inventory={this.state.inventory}
+                handleAddItem={this.handleAddItem}
               />
             :
               <Redirect to='/login'/>
@@ -83,13 +85,19 @@ class App extends Component {
                 history={history}
                 title={'Add Item'}
                 items={this.state.items}
-                handleAddItem={this.state.handleAddItem}
+                handleAddItem={this.handleAddItem}
               />
             :
               <Redirect to='/login'/>
           }/>
-          <Route exact path='/' render={() =>
-            <Item />
+          <Route exact path='/' render={({ history }) =>
+            <ItemsPage
+              history={history}
+              title={'Inventory List'}
+              items={this.state.items}
+              inventory={this.state.inventory}
+              handleAddItem={this.handleAddItem}
+            />
           }/>
         </Switch>
       </div>

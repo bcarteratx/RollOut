@@ -4,14 +4,17 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import ItemsPage from '../ItemsPage/ItemsPage'
+import AddItemPage from '../AddItemPage/AddItemPage'
 import * as itemsAPI from '../../services/items-api';
 import * as userAPI from '../../services/user-api';
-import NavBar from '../../components/NavBar/NavBar'
+import NavBar from '../../components/NavBar/NavBar';
+import Item from '../../components/Item/Item';
 
 class App extends Component {
   state = {
     // Initialize user if there's a token, otherwise null
     user: userAPI.getUser(),
+    inventory: [],
     items: ['Charmin', 'Lysol'],
   };
 
@@ -29,7 +32,7 @@ class App extends Component {
   handleAddItem = async newItemData => {
     const newItem = await itemsAPI.create(newItemData)
     this.setState(state => ({
-      items: [...this.state.items, newItem]
+      items: [...state.items, newItem]
     }), () => this.props.history.push('/'));
   }
 
@@ -74,8 +77,19 @@ class App extends Component {
             :
               <Redirect to='/login'/>
           }/>
+          <Route exact path='/additem' render={({ history }) => 
+            userAPI.getUser() ? 
+              <AddItemPage
+                history={history}
+                title={'Add Item'}
+                items={this.state.items}
+                handleAddItem={this.state.handleAddItem}
+              />
+            :
+              <Redirect to='/login'/>
+          }/>
           <Route exact path='/' render={() =>
-            <h3>This is the home page</h3>
+            <Item />
           }/>
         </Switch>
       </div>

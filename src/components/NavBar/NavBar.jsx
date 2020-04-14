@@ -7,6 +7,10 @@ const NavBar = (props) => {
     <div>
       <Link to='/inventory' className='NavBar-link'>Your Inventory</Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      <Link to='/additem' className='NavBar-link'>Add Item</Link>
+      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      <Link to='/' className='NavBar-link'>Home</Link>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
       <Link to='' className='NavBar-link' onClick={props.handleLogout}>Logout</Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       <span className='NavBar-welcome'>Welcome, {props.user.name}</span>

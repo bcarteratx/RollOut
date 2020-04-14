@@ -1,6 +1,6 @@
 import React from 'react';
 import ItemList from '../../components/ItemList/ItemList';
-import AddItem from '../../components/AddItem/AddItem';
+// import AddItem from '../../components/AddItem/AddItem';
 
 const ItemsPage = (props) => {
   return (
@@ -8,9 +8,9 @@ const ItemsPage = (props) => {
       <ItemList 
         items={props.items}
       />
-      <AddItem 
+      {/* <AddItem 
         handleAddItem={props.handleAddItem}
-      />
+      /> */}
     </React.Fragment>
   );
 }

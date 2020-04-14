@@ -8,7 +8,7 @@ class AddItem extends Component {
       name: '',
       size: '',
       quantity: '',
-      inStock: '',
+      inStock: true,
     }
   }
 

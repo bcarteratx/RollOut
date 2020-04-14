@@ -10,6 +10,9 @@ const Item = (props) => {
                 <tr>{props.item.size}</tr>
                 <th>Quantity:</th>
                 <tr>{props.item.quantity}</tr>
+                <button
+                  onClick={() => props.handleDeleteItem(props.item._id)}
+                >DELETE</button>
             </td>
         </div>
     </React.Fragment>

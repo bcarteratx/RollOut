@@ -25,7 +25,7 @@ function InventoryList(props){
   )
   }else{
     return (
-      <h1>You don't have anything in your inventory!</h1>
+      <h1>Oh No! You are out of Rolls!</h1>
     )
   }
 }

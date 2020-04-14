@@ -37,6 +37,13 @@ class App extends Component {
     }), () => this.props.history.push('/'));
   }
 
+  handleDeleteItem = async id => {
+    await itemsAPI.deleteOne(id);
+    this.setState(state => ({
+      items: state.items.filter(i => i._id !== id)
+    }), () => this.props.history.push('/'));
+  }
+
   /*-------------------------- Lifecycle Methods ---------------------------*/
   
   async componentDidMount() {
@@ -97,6 +104,7 @@ class App extends Component {
               items={this.state.items}
               inventory={this.state.inventory}
               handleAddItem={this.handleAddItem}
+              handleDeleteItem={this.handleDeleteItem}
             />
           }/>
         </Switch>

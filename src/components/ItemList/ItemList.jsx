@@ -14,8 +14,8 @@ function ItemList(props){
           <Item 
             item = {item} 
             key = {item._id}
-            // handleDeleteItem = {props.handleDeleteItem}
-            // handleUpdateItem = {props.handleUpdateItem}
+            handleDeleteItem = {props.handleDeleteItem}
+            handleUpdateItem = {props.handleUpdateItem}
           />
           </tr>
         )}
@@ -25,7 +25,7 @@ function ItemList(props){
   )
   }else{
     return (
-      <h1>You don't have anything in your inventory!</h1>
+      <h1>We don't have anything in stock right now, check back later!</h1>
     )
   }
 }

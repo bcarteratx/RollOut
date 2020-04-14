@@ -7,6 +7,7 @@ const ItemsPage = (props) => {
     <React.Fragment>
       <ItemList 
         items={props.items}
+        handleDeleteItem={props.handleDeleteItem}
       />
       {/* <AddItem 
         handleAddItem={props.handleAddItem}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './LoginPage.css';
-import * as userAPI from '../../services/user-api';
+import * as userService from '../../services/userService';
 
 class LoginPage extends Component {
   
@@ -20,7 +20,7 @@ class LoginPage extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await userAPI.login(this.state);
+      await userService.login(this.state);
       // Let <App> know a user has signed up!
       this.props.handleSignupOrLogin();
       // Successfully signed up - show GamePage

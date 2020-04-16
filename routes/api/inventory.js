@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const itemsCtrl = require('../../controllers/items');
+const inventoryCtrl = require('../../controllers/inventory');
 
 /*------------------------------ Public Routes ------------------------------*/
 
@@ -9,11 +9,10 @@ const itemsCtrl = require('../../controllers/items');
 
 // Process the token for only the routes below
 router.use(require('../../config/auth'));
-router.get('/', checkAuth, itemsCtrl.index);
-router.post('/', checkAuth, itemsCtrl.create);
-router.get('/:id', checkAuth, itemsCtrl.show);
-router.put('/:id', checkAuth, itemsCtrl.update);
-router.delete('/:id', checkAuth, itemsCtrl.delete);
+router.get('/', checkAuth, inventoryCtrl.index);
+router.post('/', checkAuth, inventoryCtrl.create);
+router.put('/:idx', checkAuth, inventoryCtrl.update);
+router.delete('/:idx', checkAuth, inventoryCtrl.delete);
 
 /*----------------------------- Helper Functions ----------------------------*/
 

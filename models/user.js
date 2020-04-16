@@ -1,21 +1,25 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const Schema = mongoose.Schema;
 
 const SALT_ROUNDS = 6;
 
-const inventorySchema = new mongoose.Schema({
-  householdSize: {type: Number, default: 2.6},
-  items: [{type: Schema.Types.ObjectId, ref: "item"}]
-}, {
-  timestamps: true
-});
+const itemSchema = new mongoose.Schema({
+    name: {type: String, required: true},
+    size: {type: String, required: true},
+    quantity: {type: Number, required: true},
+    inStock: {type: Boolean, default: true},
+    owner: {type: String}
+  }, {
+    timestamps: true
+  }
+);
 
 const userSchema = new mongoose.Schema({
   name: String,
   email: {type: String, required: true, lowercase: true, unique: true},
   password: String,
-  inventory: [inventorySchema]
+  householdSize: {type: Number, default: 2.6},
+  inventory: [itemSchema]
 }, {
   timestamps: true
 });

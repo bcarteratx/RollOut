@@ -3,38 +3,49 @@ import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
-import ItemsPage from '../ItemsPage/ItemsPage'
-import InventoryPage from '../InventoryPage/InventoryPage'
-import AddItemPage from '../AddItemPage/AddItemPage'
+import InventoryPage from '../InventoryPage/InventoryPage';
+import AddInventoryPage from '../AddInventoryPage/AddInventoryPage';
+import ItemsPage from '../ItemsPage/ItemsPage';
+import AddItemPage from '../AddItemPage/AddItemPage';
+import EditItemPage from '../EditItemPage/EditItemPage';
+import * as inventoryAPI from '../../services/inventory-api';
 import * as itemsAPI from '../../services/items-api';
-import * as userAPI from '../../services/user-api';
+import * as userAPI from '../../services/userService';
+import * as userService from '../../services/userService';
 import NavBar from '../../components/NavBar/NavBar';
 import Item from '../../components/Item/Item';
 
 class App extends Component {
   state = {
     // Initialize user if there's a token, otherwise null
-    user: userAPI.getUser(),
-    inventory: ['Toilet Paper', 'Lysol'],
+    user: userService.getUser(),
+    inventory: [],
     items: [],
   };
 
   /*--------------------------- Callback Methods ---------------------------*/
   
   handleLogout = () => {
-    userAPI.logout();
+    userService.logout();
     this.setState({ user: null });
   }
   
   handleSignupOrLogin = () => {
-    this.setState({user: userAPI.getUser()});
+    this.setState({user: userService.getUser()});
   }
   
   handleAddItem = async newItemData => {
-    const newItem = await itemsAPI.create(newItemData)
+    const newItem = await inventoryAPI.create(newItemData)
     this.setState(state => ({
       items: [...state.items, newItem]
     }), () => this.props.history.push('/'));
+  }
+
+  handleAddInventory = async newInvtData => {
+    const newInvt = await inventoryAPI.create(newInvtData);
+    this.setState(state => ({
+      inventory: [...state.inventory, newInvt]
+    }), () => this.props.history.push('/inventory'));
   }
 
   handleDeleteItem = async id => {
@@ -44,11 +55,30 @@ class App extends Component {
     }), () => this.props.history.push('/'));
   }
 
+  handleDeleteInventory= async id => {
+    await inventoryAPI.deleteOne(id);
+    this.setState(state => ({
+      inventory: state.inventory.filter(i => i._id !== id)
+    }), () => this.props.history.push('/inventory'));
+  }
+
+  handleUpdateItem = async updateItemData => {
+    const updateItem = await itemsAPI.update(updateItemData);
+    const newItemArray = this.state.items.map( i =>
+      i._id === updateItem._id ? updateItem : i);
+    this.setState(
+      {items: newItemArray},
+      () => this.props.history.push('/')
+    );
+  }
+
   /*-------------------------- Lifecycle Methods ---------------------------*/
   
   async componentDidMount() {
     const items = await itemsAPI.index();
     this.setState({ items });
+    const inventory = await inventoryAPI.getAll();
+    this.setState({ inventory });
   }
 
   /*-------------------------------- Render --------------------------------*/
@@ -79,12 +109,37 @@ class App extends Component {
               <InventoryPage
                 history={history}
                 title={'Inventory List'}
-                items={this.state.items}
+                user={this.state}
                 inventory={this.state.inventory}
-                handleAddItem={this.handleAddItem}
+                handleDeleteInventory={this.handleDeleteInventory}
+                />
+                :
+                <Redirect to='/login'/>
+              }/>
+          <Route exact path='/addinventory' render={({ history }) => 
+            <AddInventoryPage
+              history={history}
+              title={'Add Item'}
+              items={this.state.items}
+              handleAddInventory={this.handleAddInventory}
+            />
+          }/>
+          {/* <Route exact path='/edit' render={({history, location}) => 
+            <EditInventoryPage
+                handleUpdateItem={this.handleUpdateItem}
+                location={location}
+                history={history}
               />
-            :
-              <Redirect to='/login'/>
+          } /> */}
+          <Route exact path='/' render={({ history }) =>
+            <ItemsPage
+              history={history}
+              title={'Item List'}
+              items={this.state.items}
+              inventory={this.state.inventory}
+              handleAddItem={this.handleAddItem}
+              handleDeleteItem={this.handleDeleteItem}
+            />
           }/>
           <Route exact path='/additem' render={({ history }) => 
             userAPI.getUser() ? 
@@ -97,16 +152,13 @@ class App extends Component {
             :
               <Redirect to='/login'/>
           }/>
-          <Route exact path='/' render={({ history }) =>
-            <ItemsPage
-              history={history}
-              title={'Inventory List'}
-              items={this.state.items}
-              inventory={this.state.inventory}
-              handleAddItem={this.handleAddItem}
-              handleDeleteItem={this.handleDeleteItem}
-            />
-          }/>
+          <Route exact path='/edit' render={({history, location}) => 
+            <EditItemPage
+                handleUpdateItem={this.handleUpdateItem}
+                location={location}
+                history={history}
+              />
+          } />
         </Switch>
       </div>
     );

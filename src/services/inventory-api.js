@@ -1,6 +1,6 @@
 import tokenService from './tokenService';
 
-const BASE_URL = '/api/items/';
+const BASE_URL = '/api/inventory/';
 
 
 // export function index() {
@@ -13,8 +13,14 @@ const BASE_URL = '/api/items/';
       //   return fetch(BASE_URL, options).then(res => res.json());
       // }
       
-export function index() {
-  return fetch(BASE_URL)
+export function getAll() {
+  const options = {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  };
+  return fetch(BASE_URL, options)
   .then(res => res.json());
 }
 
@@ -40,8 +46,8 @@ export function deleteOne(id) {
   }).then(res => res.json());
 }
 
-export function update(item) {
-  return fetch(`${BASE_URL}/${item._id}`, {
+export function update(item, idx) {
+  return fetch(`${BASE_URL}/${idx}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json',

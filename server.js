@@ -18,6 +18,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/items', require('./routes/api/items'));
+app.use('/api/inventory', require('./routes/api/inventory'));
 
 // All API routes should be above this comment
 // Sends all other GET requests to build/index.html

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import * as userAPI from '../../services/user-api';
+import * as userService from '../../services/userService';
 
 class SignupForm extends Component {
 
@@ -22,7 +22,7 @@ class SignupForm extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await userAPI.signup(this.state);
+      await userService.signup(this.state);
       // Let <App> know a user has signed up!
       this.props.handleSignupOrLogin();
       // Successfully signed up - show GamePage

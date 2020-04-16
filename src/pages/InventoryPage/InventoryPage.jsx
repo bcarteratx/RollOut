@@ -6,11 +6,9 @@ const InventoryPage = (props) => {
   return (
     <React.Fragment>
       <InventoryList 
-        items={props.items}
+        inventory={props.inventory}
+        handleDeleteInventory={props.handleDeleteInventory}
       />
-      {/* <AddItem 
-        handleAddItem={props.handleAddItem}
-      /> */}
     </React.Fragment>
   );
 }

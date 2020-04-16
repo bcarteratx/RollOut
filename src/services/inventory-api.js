@@ -51,7 +51,7 @@ export function update(item, idx) {
     method: 'PUT',
     headers: {
       'content-type': 'application/json',
-      'Authorization': 'Bearer ' + tokenService.getToken()
+      // 'Authorization': 'Bearer ' + tokenService.getToken()
     },
     body: JSON.stringify(item)
   }).then(res => res.json());

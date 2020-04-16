@@ -3,4 +3,4 @@
 // 409 regular rolls per year
 // if home 24/7 would result in 140% increase in daily usage
 // for 2 weeks a 2-person household would need 9 double rolls, or 5 mega rolls
-
+// if a user has more than 2 months worth of rolls, they are hoarding.

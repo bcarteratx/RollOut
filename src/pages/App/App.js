@@ -5,6 +5,7 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import InventoryPage from '../InventoryPage/InventoryPage';
 import AddInventoryPage from '../AddInventoryPage/AddInventoryPage';
+import EditInventoryPage from '../EditInventoryPage/EditInventoryPage';
 import ItemsPage from '../ItemsPage/ItemsPage';
 import AddItemPage from '../AddItemPage/AddItemPage';
 import EditItemPage from '../EditItemPage/EditItemPage';
@@ -72,6 +73,16 @@ class App extends Component {
     );
   }
 
+  handleUpdateInventory = async (updatedInvtData, idx, id) => {
+    const updatedInvt = await inventoryAPI.update(updatedInvtData, idx);
+    const newInvtArray = this.state.inventory.map(i =>
+        i._id === id ? updatedInvt : i
+      );
+      this.setState(
+        {inventory: newInvtArray},
+        () => this.props.history.push('/inventory')
+      );
+  }
   /*-------------------------- Lifecycle Methods ---------------------------*/
   
   async componentDidMount() {
@@ -124,13 +135,13 @@ class App extends Component {
               handleAddInventory={this.handleAddInventory}
             />
           }/>
-          {/* <Route exact path='/edit' render={({history, location}) => 
+          <Route exact path='/editinventory' render={({history, location}) => 
             <EditInventoryPage
-                handleUpdateItem={this.handleUpdateItem}
+                handleUpdateInventory={this.handleUpdateInventory}
                 location={location}
                 history={history}
               />
-          } /> */}
+          } />
           <Route exact path='/' render={({ history }) =>
             <ItemsPage
               history={history}

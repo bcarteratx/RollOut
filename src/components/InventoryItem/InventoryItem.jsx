@@ -13,14 +13,16 @@ const IventoryItem = ({ item, user, idx, handleDeleteInventory}) => {
                 <tr>{item.quantity}</tr>
             </td>
         </div>
-        <Link to={{
-          pathname: '/editinventory',
-          state: {item},
-          idx: idx
-        }}
-        ></Link>
-        <button onClick={() => handleDeleteInventory(item._id, idx)}
-        >DELETE</button>
+        <div>
+          <Link to={{
+            pathname: '/editinventory',
+            state: {item},
+            idx: idx
+          }}
+          >UPDATE</Link>
+          <button onClick={() => handleDeleteInventory(item._id, idx)}
+          >DELETE</button>
+        </div>
     </React.Fragment>
   );
 }

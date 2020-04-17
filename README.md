@@ -1,70 +1,78 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Roll-Hoarder
 
-## Available Scripts
+### Date: 4/20/2020
 
-In the project directory, you can run:
+#### Developed by: Brandon Carter
+___________________________
 
-### `yarn start`
+### _Getting Started_:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Roll-Hoarder](https://)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+A full-stack MERN application to keep track of your precious Toilet paper during the Coronavirus outbreak.
+  
+* Click [here](https://roll-hoarder.herokuapp.com/) to use the deployed app.
 
-### `yarn test`
+* Click [here](https://trello.com/b/PomVEGpQ/project-4-rollout) to view the Trello board used for planning.
+_________________________________
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### _Motivation_:
 
-### `yarn build`
+These are strange and frightning times for everyone during the COVID-19 pandemic. Forced to stay at home, people are panic buying all available toilet paper. With supplies running low, every roll must be accounted for. If only there were an app to assist those in need. Luckily for them there is, welcome to Roll-Hoarder!
+_________________________________
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### ***Screenshots***
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+###### Wireframe
+![Wireframe](public/images/Wireframe.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+###### Entity Relationship Diagram
+![ERD](public/images/ERD.png)
 
-### `yarn eject`
+###### Home Page
+![Home Page](public/images/Screenshot_Home.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+###### Inventory Page
+![Inventory Page](public/images/Screenshot_Inventory.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+###### Add Item Page
+![Add Item Page](public/images/Screenshot_Add.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+_________________________________
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### _User Experience_:
 
-## Learn More
+* As a User, I should be able to see a list of items for sale on the home page without being logged in.
+* As a User, I should be able to see a list of my inventory items when logged in.
+* As a User, I should be able to add Items to my inventory when logged in.
+* As a User, I should be able to update my items when logged in.
+* As a User, I should be able to delete my items when logged in.
+* As a User, my inventory should be protected from other users.
+* As a User, I should be able to logout.
+_________________________________
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### _Technology Implemented_:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* React
+* Node/Express
+* MongoDB/Mongoose
+* HTML
+* CSS
+* Semantic UI
+* JSON Web Token Auth
+* Heroku
+* GitHub
+* Chajr
+_________________________________
 
-### Code Splitting
+### _Credits_:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+* Favicon Icon by Freepik from www.flaticon.com
+* Project scaffolding using [Chajr](https://github.com/DavidStinson/chajr) by David Stinson
+_________________________________
+### _Upcoming Features_:
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# rollout
-#### Started on: 04-11-2020
+* Automatically decrease roll count based on usage/week
+* Use Twilio API to send text alert when roll count is low.
+* Alert user that they are hoarding when they have too many rolls.
+_________________________________

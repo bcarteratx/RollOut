@@ -14,7 +14,6 @@ import * as itemsAPI from '../../services/items-api';
 import * as userAPI from '../../services/userService';
 import * as userService from '../../services/userService';
 import NavBar from '../../components/NavBar/NavBar';
-import Item from '../../components/Item/Item';
 
 class App extends Component {
   state = {
@@ -97,11 +96,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Welcome to Rollout</h1>
         <NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
         />
+        <h1>Welcome to Roll Hoarder</h1>
         <Switch>
           <Route exact path='/login' render={({ history }) => 
             <LoginPage

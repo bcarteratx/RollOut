@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import * as userService from '../../services/userService';
+import { Button, Form, Grid, Header, Image, Segment } from 'semantic-ui-react';
+
 
 class SignupForm extends Component {
 
@@ -39,57 +41,61 @@ class SignupForm extends Component {
 
   render() {
     return (
-      <div>
-        <header>Sign Up</header>
-        <form onSubmit={this.handleSubmit} >
-          <div>
-            <input 
-              type="text"
-              placeholder="Name" 
-              value={this.state.name} 
-              name="name" 
-              onChange={this.handleChange} 
-            />
-          </div>
-          <div>
-            <input 
-              type="email"
-              placeholder="Email" 
-              value={this.state.email} 
-              name="email" 
-              onChange={this.handleChange}
-            />
-          </div>
-          <div>
-            <input 
-              type="password" 
-              placeholder="Password" 
-              value={this.state.password} 
-              name="password" 
-              onChange={this.handleChange} 
-            />
-          </div>
-          <div className="form-group">
-            <input 
-              type="password" 
-              placeholder="Confirm Password" 
-              value={this.state.passwordConf} 
-              name="passwordConf" 
-              onChange={this.handleChange} 
-            />
-          </div>
-          <div>
-            <button 
-              className="btn btn-default" 
-              disabled={this.isFormInvalid()}       
-            >
-              Sign Up
-            </button>
-            &nbsp;&nbsp;
-            <Link to='/'>Cancel</Link>
-          </div>
-        </form>
-      </div>
+      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+        <Grid.Column style={{ width: 350, maxWidth: 450 }}>
+        <Header as='h2' color='orange' textAlign='center'>
+          <Image src='images/toilet-paper.png' /> Sign Up
+        </Header>
+        <Form size='large' onSubmit={this.handleSubmit}>
+          <Segment stacked>
+              <Form.Input 
+                fluid icon='user'
+                iconPosition='left'
+                type="text"
+                placeholder="Name" 
+                value={this.state.name} 
+                name="name" 
+                onChange={this.handleChange} 
+              />
+              <Form.Input 
+                fluid icon='user'
+                iconPosition='left'
+                type="email"
+                placeholder="Email" 
+                value={this.state.email} 
+                name="email" 
+                onChange={this.handleChange}
+              />
+              <Form.Input 
+                fluid icon='lock'
+                iconPosition='left'
+                type="password" 
+                placeholder="Password" 
+                value={this.state.password} 
+                name="password" 
+                onChange={this.handleChange} 
+              />
+              <Form.Input
+                fluid icon='lock'
+                iconPosition='left'
+                type="password" 
+                placeholder="Confirm Password" 
+                value={this.state.passwordConf} 
+                name="passwordConf" 
+                onChange={this.handleChange} 
+              />
+              <Button
+                color='orange' fluid size='large' 
+                disabled={this.isFormInvalid()}       
+              >
+                Sign Up
+              </Button>
+              &nbsp;&nbsp;
+              <Link to='/'>Cancel</Link>
+            </Segment>
+          </Form>
+        </Grid.Column>
+      </Grid>
     );
   }
 }

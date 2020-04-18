@@ -1,13 +1,13 @@
 
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 
 const LoginForm = (props) => (
   <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header as='h2' color='orange' textAlign='center'>
-        <Image src='' /> Log-in to your account
+        <Image src='images/toilet-paper.png' /> Log-in to your account
       </Header>
       <Form size='large' onSubmit={props.handleSubmit}>
         <Segment stacked>
@@ -17,7 +17,6 @@ const LoginForm = (props) => (
             placeholder='E-mail address'
             name="email"
             onChange={props.handleChange}
-
           />
           <Form.Input
             fluid
@@ -28,7 +27,6 @@ const LoginForm = (props) => (
             name="pw"
             onChange={props.handleChange}
           />
-
           <Button color='orange' fluid size='large'>
             Login
           </Button>

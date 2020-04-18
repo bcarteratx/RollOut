@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import './LoginPage.css';
 import * as userService from '../../services/userService';
 import LoginForm from '../../components/LoginForm/LoginForm';

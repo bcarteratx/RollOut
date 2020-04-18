@@ -6,7 +6,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import InventoryPage from '../InventoryPage/InventoryPage';
 import AddInventoryPage from '../AddInventoryPage/AddInventoryPage';
 import EditInventoryPage from '../EditInventoryPage/EditInventoryPage';
-import ItemsPage from '../ItemsPage/ItemsPage';
+import ItemPage from '../ItemPage/ItemPage';
 import AddItemPage from '../AddItemPage/AddItemPage';
 import EditItemPage from '../EditItemPage/EditItemPage';
 import * as inventoryAPI from '../../services/inventory-api';
@@ -100,49 +100,50 @@ class App extends Component {
           user={this.state.user}
           handleLogout={this.handleLogout}
         />
-        <h1>Welcome to Roll Hoarder</h1>
         <Switch>
           <Route exact path='/login' render={({ history }) => 
             <LoginPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
+            history={history}
+            handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
           <Route exact path='/signup' render={({ history }) => 
             <SignupPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
+            history={history}
+            handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
           <Route exact path='/inventory' render={({ history }) => 
             userAPI.getUser() ? 
-              <InventoryPage
-                history={history}
-                title={'Inventory List'}
-                user={this.state}
-                inventory={this.state.inventory}
-                handleDeleteInventory={this.handleDeleteInventory}
-                />
-                :
-                <Redirect to='/login'/>
-              }/>
+            <InventoryPage
+            history={history}
+            title={'Inventory List'}
+            user={this.state}
+            inventory={this.state.inventory}
+            handleDeleteInventory={this.handleDeleteInventory}
+            />
+            :
+            <Redirect to='/login'/>
+          }/>
           <Route exact path='/addinventory' render={({ history }) => 
             <AddInventoryPage
-              history={history}
-              title={'Add Item'}
-              items={this.state.items}
-              handleAddInventory={this.handleAddInventory}
+            history={history}
+            title={'Add Item'}
+            items={this.state.items}
+            handleAddInventory={this.handleAddInventory}
             />
           }/>
           <Route exact path='/editinventory' render={({history, location}) => 
             <EditInventoryPage
-                handleUpdateInventory={this.handleUpdateInventory}
-                location={location}
-                history={history}
-              />
+            handleUpdateInventory={this.handleUpdateInventory}
+            location={location}
+            history={history}
+            />
           } />
           <Route exact path='/' render={({ history }) =>
-            <ItemsPage
+            <>
+            <h1>Welcome to Roll Hoarder</h1>
+            <ItemPage
               history={history}
               title={'Item List'}
               items={this.state.items}
@@ -150,6 +151,7 @@ class App extends Component {
               handleAddItem={this.handleAddItem}
               handleDeleteItem={this.handleDeleteItem}
             />
+            </>
           }/>
           <Route exact path='/additem' render={({ history }) => 
             // this.state.user.email === 'admin@admin.com' ?

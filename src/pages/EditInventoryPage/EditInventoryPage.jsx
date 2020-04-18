@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import {Button, Form} from 'semantic-ui-react';
 
 
@@ -63,12 +63,7 @@ render() {
           disabled={this.state.invalidForm}
         >Update Item</Button>   
       </Form>
-    // <>
-    //   <EditInventory
-    //     handleUpdateInventory={this.props.handleUpdateInventory}
-    //     formData={this.state.formData}
-    //   />
-    // </>
+   
     // <>
     //   <h1>Edit Item</h1>
     //   <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>

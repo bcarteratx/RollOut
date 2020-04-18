@@ -1,5 +1,5 @@
 import React from 'react';
-import AddItem from '../../components/AddItem/AddItem';
+import AddItem from '../../components/AddItemForm/AddItemForm';
 
 const AddItemPage = (props) => {
   return (

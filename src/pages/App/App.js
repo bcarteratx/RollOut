@@ -152,22 +152,22 @@ class App extends Component {
             />
           }/>
           <Route exact path='/additem' render={({ history }) => 
-            this.state.user.email === 'admin@admin.com' ?
+            // this.state.user.email === 'admin@admin.com' ?
             <AddItemPage
                 history={history}
                 title={'Add Item'}
                 items={this.state.items}
                 handleAddItem={this.handleAddItem}
               />
-            :
-            <ItemsPage
-              history={history}
-              title={'Item List'}
-              items={this.state.items}
-              inventory={this.state.inventory}
-              handleAddItem={this.handleAddItem}
-              handleDeleteItem={this.handleDeleteItem}
-            />
+            // :
+            // <ItemsPage
+            //   history={history}
+            //   title={'Item List'}
+            //   items={this.state.items}
+            //   inventory={this.state.inventory}
+            //   handleAddItem={this.handleAddItem}
+            //   handleDeleteItem={this.handleDeleteItem}
+            // />
           }/>
           <Route exact path='/edit' render={({history, location}) => 
             <EditItemPage

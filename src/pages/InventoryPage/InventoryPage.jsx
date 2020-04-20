@@ -8,6 +8,8 @@ const InventoryPage = (props) => {
       <InventoryList 
         inventory={props.inventory}
         handleDeleteInventory={props.handleDeleteInventory}
+        handleIncrement={props.handleIncrement}
+        handleDecrement={props.handleDecrement}
       />
     </React.Fragment>
   );

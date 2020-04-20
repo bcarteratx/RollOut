@@ -1,0 +1,7 @@
+#root {
+  height: 100%;
+  margin: 0;
+  background-image: url(../public/images/home-background.jpg);
+  background-position: center;
+  background-size: cover;
+}

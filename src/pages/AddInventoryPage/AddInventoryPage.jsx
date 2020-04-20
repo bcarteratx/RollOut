@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './AddInventoryPage.css'
 import InventoryForm from '../../components/InventoryForm/InventoryForm';
 
 class AddInventoryPage extends Component {
@@ -28,12 +29,12 @@ class AddInventoryPage extends Component {
 
   render () {
     return (
-      <>
+      <div className='AddInventoryPage'>
         <h1>Add Your Rolls Here</h1>
         <InventoryForm
           handleAddInventory={this.props.handleAddInventory}
         />
-      </>
+      </div>
     )
   }
 }

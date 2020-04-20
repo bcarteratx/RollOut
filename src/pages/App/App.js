@@ -82,6 +82,29 @@ class App extends Component {
         () => this.props.history.push('/inventory')
       );
   }
+
+  handleIncrement = async (updatedInvtData, idx, id) => {
+    const updatedInvt = await inventoryAPI.update(updatedInvtData, idx);
+    const newInvtArray = this.state.inventory.map(i =>
+        i._id === id ? updatedInvt : i
+      );
+      this.setState(
+        {inventory: newInvtArray},
+        () => this.props.history.push('/inventory')
+      );
+  }
+ 
+  handleDecrement = async (updatedInvtData, idx, id) => {
+    const updatedInvt = await inventoryAPI.update(updatedInvtData, idx);
+    const newInvtArray = this.state.inventory.map(i =>
+        i._id === id ? updatedInvt : i
+      );
+      this.setState(
+        {inventory: newInvtArray},
+        () => this.props.history.push('/inventory')
+      );
+  }
+
   /*-------------------------- Lifecycle Methods ---------------------------*/
   
   async componentDidMount() {
@@ -95,7 +118,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App Bgd">
         <NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
@@ -121,6 +144,8 @@ class App extends Component {
             user={this.state}
             inventory={this.state.inventory}
             handleDeleteInventory={this.handleDeleteInventory}
+            handleIncrement={this.handleIncrement}
+            handleDecrement={this.handleDecrement}
             />
             :
             <Redirect to='/login'/>
@@ -154,22 +179,22 @@ class App extends Component {
             </>
           }/>
           <Route exact path='/additem' render={({ history }) => 
-            // this.state.user.email === 'admin@admin.com' ?
+            this.state.user.email === 'admin@admin.com' ?
             <AddItemPage
                 history={history}
                 title={'Add Item'}
                 items={this.state.items}
                 handleAddItem={this.handleAddItem}
               />
-            // :
-            // <ItemsPage
-            //   history={history}
-            //   title={'Item List'}
-            //   items={this.state.items}
-            //   inventory={this.state.inventory}
-            //   handleAddItem={this.handleAddItem}
-            //   handleDeleteItem={this.handleDeleteItem}
-            // />
+            :
+            <ItemPage
+              history={history}
+              title={'Item List'}
+              items={this.state.items}
+              inventory={this.state.inventory}
+              handleAddItem={this.handleAddItem}
+              handleDeleteItem={this.handleDeleteItem}
+            />
           }/>
           <Route exact path='/edit' render={({history, location}) => 
             <EditItemPage

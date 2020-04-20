@@ -1,7 +1,15 @@
 .App {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  margin-bottom: 50px;
+  margin: 0px;
+  
+}
+
+.Bgd {
+  background-image: url("../../media/home-background.jpg");
+  background-size: cover;
+  height: 100%;
+  
 }

@@ -14,6 +14,8 @@ function InventoryList(props){
                       item={item}
                       user={props.user}
                       handleDeleteInventory={props.handleDeleteInventory}
+                      handleIncrement={props.handleIncrement}
+                      handleDecrement={props.handleDecrement}
                   />
               )}
           </div>

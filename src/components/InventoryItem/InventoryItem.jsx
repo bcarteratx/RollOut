@@ -1,7 +1,74 @@
-import React, { Component } from 'react';
-import { Button, Icon, Item, Label } from 'semantic-ui-react';
+import React from 'react';
+import { Button, Icon, Item } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import './InventoryItem.css';
+
+
+const InventoryItem = ({ item, user, idx, handleDeleteInventory, handleDecrement, handleIncrement}) => (
+  <Item.Group divided>
+    <Item>
+      <Item.Image 
+        className='Invt-img' 
+        src={
+          item.quantity > 10 
+            ? '/images/toilet-paperX3.png' 
+            : 
+            (item.quantity > 5 
+              ? '/images/toilet-paperX2.png' 
+              : 
+              (item.quantity > 1
+                ? '/images/toilet-paperX1.png'
+                : '/images/poop-emoji.png'
+              )
+            ) 
+        } 
+      />
+      <Item.Content>
+        <Item.Header>{item.name}</Item.Header>
+        <Item.Meta>
+          <span className=''>{`${item.size} Roll`}</span>
+        </Item.Meta>
+        <Item.Extra>
+          <Button color={item.quantity < 5 ? 'red' : 'secondary' } >{`${item.quantity} rolls left`}</Button>
+          <Button
+            color='orange' floated='left'
+            as={Link} to={{
+              pathname: '/editinventory',
+              state: {item},
+              idx: idx
+            }}  
+            >
+            Edit Item
+            <Icon name='right chevron' />
+          </Button>
+          <Button 
+            basic color='red' floated=''
+            onClick={() => handleDeleteInventory(item._id, idx)}
+            >
+            DELETE
+          </Button>
+        </Item.Extra>
+        {/* Add Incrementing/Decrementing Buttons Below */}
+        {/* <Button.Group size='large'>
+          <Button 
+            basic color='red'
+            onClick={() => handleDecrement(item._id, idx)}
+            >-</Button>
+          <Button.Or />
+          <Button 
+            basic color='green' 
+            onClick={() => handleIncrement(item._id, idx)}
+          >+</Button>
+        </Button.Group> */}
+      </Item.Content>
+    </Item>
+  </Item.Group>
+)
+
+export default InventoryItem 
+
+
+// Refactor as class component for Increment/Decrement feature below
 
 // class InventoryItem extends Component {
 //   state = {
@@ -82,66 +149,3 @@ import './InventoryItem.css';
 // }
  
 // export default InventoryItem;
-
-const InventoryItem = ({ item, user, idx, handleDeleteInventory, handleDecrement, handleIncrement}) => (
-  <Item.Group divided>
-    <Item>
-      <Item.Image 
-        className='Invt-img' 
-        src={
-          item.quantity > 10 
-            ? '/images/toilet-paperX3.png' 
-            : 
-            (item.quantity > 5 
-              ? '/images/toilet-paperX2.png' 
-              : 
-              (item.quantity > 1
-                ? '/images/toilet-paperX1.png'
-                : '/images/poop-emoji.png'
-              )
-            ) 
-        } 
-      />
-      <Item.Content>
-        <Item.Header>{item.name}</Item.Header>
-        <Item.Meta>
-          <span className=''>{`${item.size} Roll`}</span>
-        </Item.Meta>
-        <Item.Extra>
-          <Button color={item.quantity < 5 ? 'red' : 'secondary' } >{`${item.quantity} rolls left`}</Button>
-          <Button
-            color='orange' floated='left'
-            as={Link} to={{
-              pathname: '/editinventory',
-              state: {item},
-              idx: idx
-            }}  
-            >
-            Edit Item
-            <Icon name='right chevron' />
-          </Button>
-          <Button 
-            basic color='red' floated=''
-            onClick={() => handleDeleteInventory(item._id, idx)}
-            >
-            DELETE
-          </Button>
-        </Item.Extra>
-        {/* Add Incrementing/Decrementing Buttons Below */}
-        {/* <Button.Group size='large'>
-          <Button 
-            basic color='red'
-            onClick={() => handleDecrement(item._id, idx)}
-            >-</Button>
-          <Button.Or />
-          <Button 
-            basic color='green' 
-            onClick={() => handleIncrement(item._id, idx)}
-          >+</Button>
-        </Button.Group> */}
-      </Item.Content>
-    </Item>
-  </Item.Group>
-)
-
-export default InventoryItem 

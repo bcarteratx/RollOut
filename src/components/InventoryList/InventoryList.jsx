@@ -5,7 +5,7 @@ import InventoryItem from '../InventoryItem/InventoryItem.jsx'
 function InventoryList(props){
     return (
       <>
-          <h1>Inventory List</h1>
+          <h1>{`${props.user.name}'s Inventory List`}</h1>
           <div>
               {props.inventory.map((item, idx) =>
                   <InventoryItem

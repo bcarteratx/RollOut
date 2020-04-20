@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 // import {Link} from 'react-router-dom';
 import {Button, Form} from 'semantic-ui-react';
-
+import './EditInventoryPage.css';
 
 class EditInventoryPage extends Component {
   state = {
@@ -27,42 +27,48 @@ class EditInventoryPage extends Component {
 
 render() {
   return (
-    <Form onSubmit={this.handleSubmit} >
-        <Form.Field>
-          <label>Product Name:</label>
-          <input 
-            placeholder='Product Name'
-            name='name' 
-            value={this.state.formData.name} 
-            onChange={this.handleChange}
-            required
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>Roll Size:</label>
-          <input 
-            placeholder='Roll Size'
-            name='size' 
-            value={this.state.formData.size} 
-            onChange={this.handleChange}
-            required
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>Roll Quantity:</label>
-          <input 
-            placeholder='Roll Quantity'
-            name='quantity' 
-            value={this.state.formData.quantity} 
-            onChange={this.handleChange}
-            required
-          />
-        </Form.Field>
-        <Button
-          type='submit'
-          disabled={this.state.invalidForm}
-        >Update Item</Button>   
-      </Form>
+    <div className='EditInventoryPage'>
+      <div className='EditInventoryPage-Form'>
+      <h1>Edit This Roll</h1>
+      <Form onSubmit={this.handleSubmit} >
+          <Form.Field>
+            <label>Product Name:</label>
+            <input 
+              placeholder='Product Name'
+              name='name' 
+              value={this.state.formData.name} 
+              onChange={this.handleChange}
+              required
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Roll Size:</label>
+            <input 
+              placeholder='Roll Size'
+              name='size' 
+              value={this.state.formData.size} 
+              onChange={this.handleChange}
+              required
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Roll Quantity:</label>
+            <input 
+              placeholder='Roll Quantity'
+              name='quantity' 
+              value={this.state.formData.quantity} 
+              onChange={this.handleChange}
+              required
+            />
+          </Form.Field>
+          <Button
+            basic color='black'
+            type='submit'
+            disabled={this.state.invalidForm}
+          >Update Item</Button>   
+        </Form>
+      </div>
+    </div>
    
     // <>
     //   <h1>Edit Item</h1>

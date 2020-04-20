@@ -118,7 +118,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App Bgd">
+      <div className="App App-Background">
         <NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
@@ -141,7 +141,7 @@ class App extends Component {
             <InventoryPage
             history={history}
             title={'Inventory List'}
-            user={this.state}
+            user={this.state.user}
             inventory={this.state.inventory}
             handleDeleteInventory={this.handleDeleteInventory}
             handleIncrement={this.handleIncrement}
@@ -151,12 +151,15 @@ class App extends Component {
             <Redirect to='/login'/>
           }/>
           <Route exact path='/addinventory' render={({ history }) => 
+            userAPI.getUser() ? 
             <AddInventoryPage
             history={history}
             title={'Add Item'}
             items={this.state.items}
             handleAddInventory={this.handleAddInventory}
             />
+            :
+            <Redirect to='/login'/>
           }/>
           <Route exact path='/editinventory' render={({history, location}) => 
             <EditInventoryPage
@@ -167,15 +170,22 @@ class App extends Component {
           } />
           <Route exact path='/' render={({ history }) =>
             <>
+            <br></br>
             <h1>Welcome to Roll Hoarder</h1>
-            <ItemPage
+            <br></br>
+            <br></br>
+            <div class='hoarder'></div>
+            <br></br>
+            <p>Now that you have panic bought all the toilet paper, Roll Hoarder can help you keep track of your roll inventory. And with the store shelves empty, don't forget to slow your roll!</p>
+            {/* Adding Store items page below */}
+            {/* <ItemPage
               history={history}
               title={'Item List'}
               items={this.state.items}
               inventory={this.state.inventory}
               handleAddItem={this.handleAddItem}
               handleDeleteItem={this.handleDeleteItem}
-            />
+            /> */}
             </>
           }/>
           <Route exact path='/additem' render={({ history }) => 

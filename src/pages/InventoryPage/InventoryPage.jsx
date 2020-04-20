@@ -5,7 +5,8 @@ import InventoryList from '../../components/InventoryList/InventoryList';
 const InventoryPage = (props) => {
   return (
     <React.Fragment>
-      <InventoryList 
+      <InventoryList
+        user={props.user}
         inventory={props.inventory}
         handleDeleteInventory={props.handleDeleteInventory}
         handleIncrement={props.handleIncrement}

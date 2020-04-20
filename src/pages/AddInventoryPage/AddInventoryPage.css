@@ -10,3 +10,15 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.AddInventoryPage {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.AddInventoryPage-Form {
+  width: 300px;
+  height: 300px;
+}

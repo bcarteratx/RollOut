@@ -13,4 +13,7 @@
 
 .NavBar-welcome {
   color: grey;
+  font-weight: bold;
+  font-size: 16px;
 }
+

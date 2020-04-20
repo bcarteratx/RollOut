@@ -1,15 +1,25 @@
 .App {
   display: flex;
   flex-flow: column nowrap;
-  /* justify-content: center; */
   align-items: center;
   margin: 0px;
-  
+  color: rgb(117, 108, 108);
 }
 
-.Bgd {
+.App-Background {
   background-image: url("../../media/home-background.jpg");
   background-size: cover;
   height: 100%;
   
+}
+
+.hoarder{
+  content: url(../../media/hoarder.jpg);
+  width: 40%;
+}
+
+p {
+  width: 40%;
+  text-align: center;
+  font-size: 18px;
 }

@@ -30,10 +30,13 @@ class AddInventoryPage extends Component {
   render () {
     return (
       <div className='AddInventoryPage'>
-        <h1>Add Your Rolls Here</h1>
-        <InventoryForm
-          handleAddInventory={this.props.handleAddInventory}
-        />
+        <div>
+          <h1>Add Your Rolls Here</h1>
+          <InventoryForm
+            className='AddInvnetoryPage-Form'
+            handleAddInventory={this.props.handleAddInventory}
+          />
+        </div>
       </div>
     )
   }

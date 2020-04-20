@@ -63,6 +63,7 @@ class InventoryForm extends Component {
           />
         </Form.Field>
         <Button
+          basic color='black'
           type='submit'
           disabled={this.state.invalidForm}
         >Add Item</Button>   

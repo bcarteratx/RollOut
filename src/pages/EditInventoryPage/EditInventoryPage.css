@@ -1,0 +1,12 @@
+.EditInventoryPage {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.EditInventoryPage-Form {
+  text-align: center;
+  width: 200px;
+  height: 300px;
+}

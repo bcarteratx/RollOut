@@ -5,7 +5,10 @@ import './NavBar.css';
 import { Menu, Segment } from 'semantic-ui-react'
 
 export default class NavBar extends Component {
-  state = { activeItem: 'home' }
+  state = { 
+    activeItem: 'home',
+    name: ''
+  }
 
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name })
@@ -35,13 +38,6 @@ export default class NavBar extends Component {
             active={activeItem === 'Add to Inventory'}
             onClick={this.handleItemClick}
           />
-          <Menu.Menu position='right'>
-            <Menu.Item
-              as={Link} to='/logout'
-              name='Log Out'
-              active={activeItem === 'logout'}
-              onClick={this.props.handleLogout}
-            />
             <Menu.Item
               as={Link} to='/login'
               name='Log In'
@@ -55,11 +51,18 @@ export default class NavBar extends Component {
               onClick={this.handleItemClick}
             />
             <Menu.Item
-              name={`Welcome, ${this.props.user.name}`}            
+              className='NavBar-welcome'
+              name={this.props.user ? `Hello ${this.props.user.name}`: ''}            
             />            
+            <Menu.Menu position='right'>
+              <Menu.Item
+                as={Link} to='/login'
+                name='Log Out'
+                active={activeItem === 'logout'}
+                onClick={this.props.handleLogout}
+              />
           </Menu.Menu>      
         </Menu>
-
       </div>
     )
   }
